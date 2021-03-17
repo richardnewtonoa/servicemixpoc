@@ -15,7 +15,7 @@ public class LogMessage implements Processor {
   public void process(Exchange exchange) throws Exception {
     Message m = exchange.getMessage();
     if (m != null) {
-      log.info(" Message Body = " + m.getBody());
+      log.info(" Message Body = " + m.getClass() + " : " + m.getBody());
     }
   }
 

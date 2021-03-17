@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.kirona.spring.model.GetRequisitionRequest;
+import com.kirona.spring.model.MessageBean;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -15,14 +16,6 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("jms")
 public class SendJmsController {
 
-  @Getter
-  @Setter
-  public static class MessageBean {
-    private String string1;
-    private Long long1;
-    private Boolean bool1;
-  }
-  
   @Autowired
   JmsTemplate jms;
   
@@ -45,4 +38,24 @@ public class SendJmsController {
     
     return "SENT";
   }
+  
+  @GetMapping(path = "rest")
+  public String testGetRequisition() {
+    log.info("Test Called");
+    
+    GetRequisitionRequest r = new GetRequisitionRequest();
+    r.setOrganisationId("org1");
+    r.setRequisitionId("r1234");
+    r.setSystem("system1");
+    
+    try {
+      jms.convertAndSend("restroute", r);
+    }
+    catch (Exception e) {
+      log.error("Error Sending JMS Message", e);
+      return "ERROR";
+    }
+    
+    return "SENT";
+  }  
 }

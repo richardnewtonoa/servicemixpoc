@@ -43,8 +43,81 @@
            <configuration>
 				<mainClass>com.kirona.spring.SpringBootEntrypoint</mainClass>             
            </configuration>
-       </plugin>              
+       </plugin>
+       
+       <!-- https://camel.apache.org/manual/latest/type-converter.html -->
+		<plugin>
+		  <groupId>org.apache.camel</groupId>
+		  <artifactId>camel-package-maven-plugin</artifactId>
+		  <version>${camel.version}</version>
+		  <executions>
+		    <execution>
+		      <id>generate</id>
+		      <goals>
+		        <goal>generate-component</goal>
+		      </goals>
+		      <phase>process-classes</phase>
+		    </execution>
+		  </executions>
+		</plugin>
+		<plugin>
+		  <groupId>org.codehaus.mojo</groupId>
+		  <artifactId>build-helper-maven-plugin</artifactId>
+		  <executions>
+		    <execution>
+		      <phase>initialize</phase>
+		      <goals>
+		        <goal>add-source</goal>
+		        <goal>add-resource</goal>
+		      </goals>
+		      <configuration>
+		        <sources>
+		          <source>src/generated/java</source>
+		        </sources>
+		        <resources>
+		          <resource>
+		            <directory>src/generated/resources</directory>
+		          </resource>
+		        </resources>
+		      </configuration>
+		    </execution>
+		  </executions>
+		</plugin>
 	</plugins>
+	
+    <pluginManagement>
+    	<plugins>
+    		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+    		<plugin>
+    			<groupId>org.eclipse.m2e</groupId>
+    			<artifactId>lifecycle-mapping</artifactId>
+    			<version>1.0.0</version>
+    			<configuration>
+    				<lifecycleMappingMetadata>
+    					<pluginExecutions>
+    						<pluginExecution>
+    							<pluginExecutionFilter>
+    								<groupId>org.apache.camel</groupId>
+    								<artifactId>
+    									camel-package-maven-plugin
+    								</artifactId>
+    								<versionRange>
+    									[${camel-version},)
+    								</versionRange>
+    								<goals>
+    									<goal>generate-component</goal>
+    								</goals>
+    							</pluginExecutionFilter>
+    							<action>
+    								<ignore></ignore>
+    							</action>
+    						</pluginExecution>
+    					</pluginExecutions>
+    				</lifecycleMappingMetadata>
+    			</configuration>
+    		</plugin>
+    	</plugins>
+    </pluginManagement>
   </build>
   
   <!-- https://camel.apache.org/camel-spring-boot/latest/ -->
@@ -72,6 +145,10 @@
         <artifactId>spring-boot-starter-activemq</artifactId>
     </dependency>
           	
+	<dependency>
+	    <groupId>org.apache.camel</groupId>
+	    <artifactId>camel-jackson</artifactId>
+	</dependency>          	
     <dependency>
         <groupId>org.apache.camel.springboot</groupId>
         <artifactId>camel-spring-boot-starter</artifactId>
@@ -88,6 +165,27 @@
         <groupId>org.apache.camel.springboot</groupId>
         <artifactId>camel-grape-starter</artifactId>
     </dependency>    
+    
+    <!-- https://camel.apache.org/components/latest/rest-openapi-component.html -->
+<!-- 	<dependency> -->
+<!-- 	  <groupId>org.apache.camel.springboot</groupId> -->
+<!-- 	  <artifactId>camel-http-starter</artifactId> -->
+<!-- 	</dependency>     -->
+<!--     <dependency> -->
+<!--         <groupId>org.apache.camel.springboot</groupId> -->
+<!--         <artifactId>camel-rest-openapi-starter</artifactId> -->
+<!--     </dependency> -->
+
+	<!-- https://camel.apache.org/components/latest/rest-component.html -->
+    <dependency>
+        <groupId>org.apache.camel.springboot</groupId>
+        <artifactId>camel-netty-http-starter</artifactId>
+    </dependency>     	
+    <dependency>
+        <groupId>org.apache.camel.springboot</groupId>
+        <artifactId>camel-rest-starter</artifactId>
+    </dependency>           
+    
 	<dependency>
 	    <groupId>org.projectlombok</groupId>
 	    <artifactId>lombok</artifactId>
