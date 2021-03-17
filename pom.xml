@@ -148,7 +148,15 @@
 	<dependency>
 	    <groupId>org.apache.camel</groupId>
 	    <artifactId>camel-jackson</artifactId>
-	</dependency>          	
+	</dependency>          
+	<dependency>
+		  <groupId>org.apache.camel.springboot</groupId>
+		  <artifactId>camel-jslt-starter</artifactId>	
+	</dependency>	
+	<dependency>
+	    <groupId>org.apache.camel.springboot</groupId>
+	    <artifactId>camel-mustache-starter</artifactId>
+	</dependency>   	
     <dependency>
         <groupId>org.apache.camel.springboot</groupId>
         <artifactId>camel-spring-boot-starter</artifactId>

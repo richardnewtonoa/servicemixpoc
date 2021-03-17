@@ -1,0 +1,8 @@
+{ 
+	"system": $exchange.properties.system, 
+	"organisationId": $exchange.properties.organisationId,
+	"stockCodes": [for (.supplierStockItem) {
+		"code": .extSupplierPartCode,
+		"delivery": .deliveryCharge
+	}]
+}
