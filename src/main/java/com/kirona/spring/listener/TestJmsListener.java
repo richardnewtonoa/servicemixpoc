@@ -4,6 +4,7 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 
 import org.springframework.jms.annotation.JmsListener;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -18,8 +19,19 @@ public class TestJmsListener {
     try {
       log.info(" body = " + message.getBody(String.class));
     }
-    catch (JMSException e) {
+    catch (Throwable e) {
       log.error("Unable to extract body as a string", e);
     }
+  }
+  
+  @JmsListener(destination = "callopenapiresult")
+  public void callOpenApiResult(@Payload String payload) {
+    log.info("Received reply : " + payload);
+//    try {
+//      log.info(" text = " + message.getStringProperty("text"));
+//    }
+//    catch (Throwable e) {
+//      log.error("Unable to extract body as a string", e);
+//    }
   }
 }

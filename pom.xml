@@ -171,10 +171,10 @@
 <!-- 	  <groupId>org.apache.camel.springboot</groupId> -->
 <!-- 	  <artifactId>camel-http-starter</artifactId> -->
 <!-- 	</dependency>     -->
-<!--     <dependency> -->
-<!--         <groupId>org.apache.camel.springboot</groupId> -->
-<!--         <artifactId>camel-rest-openapi-starter</artifactId> -->
-<!--     </dependency> -->
+    <dependency>
+        <groupId>org.apache.camel.springboot</groupId>
+        <artifactId>camel-rest-openapi-starter</artifactId>
+    </dependency>
 
 	<!-- https://camel.apache.org/components/latest/rest-component.html -->
     <dependency>

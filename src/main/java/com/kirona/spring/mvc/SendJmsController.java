@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kirona.spring.model.GetRequisitionRequest;
 import com.kirona.spring.model.MessageBean;
+import com.kirona.spring.model.SystemAndOrg;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,6 +19,25 @@ public class SendJmsController {
 
   @Autowired
   JmsTemplate jms;
+  
+  @GetMapping(path = "callopenapi")
+  public String callopenapi() {
+    log.info("callopenapi Called");
+    
+    SystemAndOrg s = new SystemAndOrg();
+    s.setOrganisationId("org1");
+    s.setSystem("system1");
+    
+    try {
+      jms.convertAndSend("callopenapi", s);
+    }
+    catch (Exception e) {
+      log.error("Error Sending JMS Message", e);
+      return "ERROR";
+    }
+    
+    return "SENT";
+  }
   
   @GetMapping(path = "test")
   public String test() {

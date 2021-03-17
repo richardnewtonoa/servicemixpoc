@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GetRequisitionRequest extends SystemAndOrg {
-  public String requisitionId;
+public class SystemAndOrg {
+  public String system;
+  public String organisationId;
 }
