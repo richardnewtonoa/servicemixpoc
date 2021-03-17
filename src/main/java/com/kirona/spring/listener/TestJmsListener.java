@@ -7,6 +7,8 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
+import com.kirona.spring.model.SystemAndOrg;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -25,7 +27,7 @@ public class TestJmsListener {
   }
   
   @JmsListener(destination = "callopenapiresult")
-  public void callOpenApiResult(@Payload String payload) {
+  public void callOpenApiResult(@Payload SystemAndOrg payload) {
     log.info("Received reply : " + payload);
 //    try {
 //      log.info(" text = " + message.getStringProperty("text"));

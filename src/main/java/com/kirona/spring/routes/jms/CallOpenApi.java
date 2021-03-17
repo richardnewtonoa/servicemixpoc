@@ -22,7 +22,8 @@ public class CallOpenApi extends RouteBuilder {
     from("direct:callopenapiresult")
       .setExchangePattern(ExchangePattern.InOnly)
       .tracing()
-      .log("${body}")
+      .transform().simple("{ \"system\": \"${exchangeProperty.system}\", \"organisationId\" : \"${exchangeProperty.organisationId}\" }")
+      .setHeader("jacksonPayloadType").constant(SystemAndOrg.class.getName())
       .to("activemq:callopenapiresult");    
   }
 

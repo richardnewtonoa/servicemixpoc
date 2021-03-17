@@ -30,13 +30,13 @@ public class JmsConfig {
       public Object fromMessage(Message message) throws JMSException, MessageConversionException {
         try {
           final JavaType type = getJavaTypeForMessage(message);
-          log.debug("Using jacksonPayloadType = " + type);
-          return super.fromMessage(message);
+          log.info("Using jacksonPayloadType = " + type);
         }
         catch (Throwable t) {
-          log.debug("Falling back to simple message conversion for : " + message);
+          log.info("Falling back to simple message conversion for : " + message);
           return sc.fromMessage(message);
         }
+        return super.fromMessage(message);
       }      
     };
     mc.setTargetType(MessageType.TEXT);
