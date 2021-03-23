@@ -262,6 +262,17 @@
 	    <version>3.0.0</version>
 	</dependency>
 	              
+	<dependency>
+	  <groupId>org.apache.camel</groupId>
+	  <artifactId>camel-csv</artifactId>
+  	</dependency>
+  	
+  	<dependency>
+	  <groupId>com.kirona.standalone</groupId>
+	  <artifactId>com.kirona.standalone.jm.wsclient</artifactId>
+	  <version>8.9.7-rc-01</version>   	
+  	</dependency>	 
+  	             
 <!-- for auto generated REST service stub -->
         <!--SpringFox dependencies-->
         <dependency>
