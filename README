@@ -1,1 +1,19 @@
 Service Bus POC
+
+
+grapepatch1.7z is an example project containing Spring beans for Camel.
+
+Install this as an artifact.
+
+Start the Spring Boot app, then stop it (it creates some template files / folders)
+
+create file grape/grape.artifacts to have this content -
+
+# list of -
+# groupId:artifactId:version
+com.kirona.poc:grapepatch1:0.0.1
+
+
+edit grape/grapeConfig.xml to have artifactory username / password, AND to have the correct local maven folder
+
+Restart the app (you should see new routes from the artifact)
