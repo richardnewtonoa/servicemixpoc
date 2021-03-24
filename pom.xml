@@ -22,7 +22,7 @@
     <version>2.2.2.RELEASE</version>
   </parent>
   
-  <profiles>
+  <profiles>  	
   	<profile>
   		<!-- generate the CM rest client -->
   		<id>generate-cm-rest</id>
@@ -82,7 +82,7 @@
           <target>1.8</target>
         </configuration>
       </plugin>
-      
+
        <plugin>
            <groupId>org.springframework.boot</groupId>
            <artifactId>spring-boot-maven-plugin</artifactId>
@@ -94,10 +94,11 @@
                </execution>
            </executions>
            <configuration>
-				<mainClass>com.kirona.spring.SpringBootEntrypoint</mainClass>             
+				<mainClass>com.kirona.spring.SpringBootEntrypoint</mainClass>
+				<classifier>springboot</classifier>       
            </configuration>
-       </plugin>
-       
+       </plugin>  			
+			       
        <!-- https://camel.apache.org/manual/latest/type-converter.html -->
 		<plugin>
 		  <groupId>org.apache.camel</groupId>

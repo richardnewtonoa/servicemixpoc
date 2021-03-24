@@ -18,6 +18,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 public class SpringBootEntrypoint {
   public static void main(String[] args) {
+    CamelGrapeContextConfig.initGrapes(args);
     SpringApplication.run(SpringBootEntrypoint.class, args);
   }
 }
