@@ -11,7 +11,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version> <!-- to fix invalid line 1 in pom.xml reported by Eclipse - https://bugs.eclipse.org/bugs/show_bug.cgi?id=547340 -->
     <camel.version>3.8.0</camel.version>
-    
+    <groovy.version>2.5.8</groovy.version>
+    <ivy.version>2.5.0</ivy.version>
     <!-- for REST generated server code -->
     <springfox-version>2.9.2</springfox-version>
   </properties>
@@ -223,11 +224,23 @@
         <groupId>org.apache.camel.springboot</groupId>
         <artifactId>camel-cxf-starter</artifactId>
     </dependency>
-    <dependency>
-        <groupId>org.apache.camel.springboot</groupId>
-        <artifactId>camel-grape-starter</artifactId>
-    </dependency>    
-    
+<!--     <dependency> -->
+<!--         <groupId>org.apache.camel.springboot</groupId> -->
+<!--         <artifactId>camel-grape-starter</artifactId> -->
+<!--     </dependency>     -->
+	<!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
+	<dependency>
+	    <groupId>org.codehaus.groovy</groupId>
+	    <artifactId>groovy-all</artifactId>
+	    <version>${groovy.version}</version>
+	    <type>pom</type>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.ivy</groupId>
+	    <artifactId>ivy</artifactId>
+	    <version>${ivy.version}</version>
+	</dependency>    
+	
     <!-- https://camel.apache.org/components/latest/rest-openapi-component.html -->
 <!-- 	<dependency> -->
 <!-- 	  <groupId>org.apache.camel.springboot</groupId> -->

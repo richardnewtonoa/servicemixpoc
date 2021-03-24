@@ -10,7 +10,7 @@
         <ivy pattern="${grape.root}/.groovy/grapes/[organisation]/[module]/ivy-[revision].xml"/>
         <artifact pattern="${grape.root}/.groovy/grapes/[organisation]/[module]/[type]s/[artifact]-[revision](-[classifier]).[ext]"/>
       </filesystem>
-      <ibiblio name="localm2" root="file:${grape.root}/.m2/repository/" checkmodified="true" changingPattern=".*" changingMatcher="regexp" m2compatible="true"/>
+<!--       <ibiblio name="localm2" root="file:${grape.root}/.m2/repository/" checkmodified="true" changingPattern=".*" changingMatcher="regexp" m2compatible="true"/> -->
 	  <ibiblio name="advanced" m2compatible="true" root="https://advancedcsg.jfrog.io/artifactory/maven-release-virtual" />
     </chain>
   </resolvers>
