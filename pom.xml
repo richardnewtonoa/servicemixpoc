@@ -286,6 +286,28 @@
 	  <artifactId>com.kirona.standalone.jm.wsclient</artifactId>
 	  <version>8.9.7-rc-01</version>   	
   	</dependency>	 
+  	
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-web-services</artifactId>
+  	</dependency>  	
+	<!-- https://mvnrepository.com/artifact/org.springframework.ws/spring-ws-security -->
+	<dependency>
+	    <groupId>org.springframework.ws</groupId>
+	    <artifactId>spring-ws-security</artifactId>
+<!-- 	    <version>3.0.10.RELEASE</version> -->
+	</dependency>
+  	<dependency>
+  		<groupId>com.kirona.server</groupId>
+  		<artifactId>com.kirona.jm.integration.notification.ws</artifactId>
+  		<version>8.8.2</version>
+  		<exclusions>
+  			<exclusion>
+	          <groupId>com.kirona.server</groupId>
+	          <artifactId>com.kirona.core.springext</artifactId>
+        	</exclusion>
+  		</exclusions>
+  	</dependency>
   	             
 <!-- for auto generated REST service stub -->
         <!--SpringFox dependencies-->
