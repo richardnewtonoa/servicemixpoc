@@ -109,7 +109,7 @@
 		    <execution>
 		      <id>generate</id>
 		      <goals>
-		        <goal>generate-component</goal>
+		        <goal>generate</goal>
 		      </goals>
 		      <phase>process-classes</phase>
 		    </execution>
@@ -160,7 +160,7 @@
     									[${camel-version},)
     								</versionRange>
     								<goals>
-    									<goal>generate-component</goal>
+    									<goal>generate</goal>
     								</goals>
     							</pluginExecutionFilter>
     							<action>
@@ -201,8 +201,8 @@
     </dependency>
           	
 	<dependency>
-	    <groupId>org.apache.camel</groupId>
-	    <artifactId>camel-jackson</artifactId>
+	    <groupId>org.apache.camel.springboot</groupId>
+	    <artifactId>camel-jackson-starter</artifactId>
 	</dependency>          
 	<dependency>
 		  <groupId>org.apache.camel.springboot</groupId>
