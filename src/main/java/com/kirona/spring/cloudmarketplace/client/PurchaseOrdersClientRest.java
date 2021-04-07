@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 // definition of the rest client calls we can make to CM around POs
 @Slf4j
-@Configuration
+//@Configuration
 public class PurchaseOrdersClientRest {
 
   // https://camel.apache.org/components/latest/rest-openapi-component.html

@@ -26,6 +26,9 @@ import org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition;
 
 import com.kirona.encryption.KironaEncryption;
 import com.kirona.webservices.jm.notification.INotificationListener;
+import com.kirona.webservices.jm.notification.jobextendedstatus.AbstractJobExtendedStatusChangeListener;
+import com.kirona.webservices.jm.notification.jobextendedstatus.JobExtendedStatusChangeRequest;
+import com.kirona.webservices.jm.notification.jobextendedstatus.JobExtendedStatusChangeResponse;
 import com.kirona.webservices.jm.notification.jobstatus.AbstractJobStatusChangeListener;
 import com.kirona.webservices.jm.notification.jobstatus.JobStatusChangeRequest;
 import com.kirona.webservices.jm.notification.jobstatus.JobStatusChangeResponse;
@@ -174,6 +177,30 @@ public class JMNotificationsEndpointConfig extends WsConfigurerAdapter implement
         return response;
       }
     };
+  }
+  
+  @Bean
+  public INotificationListener jobExtendedStatusChangeListener() {
+    return new AbstractJobExtendedStatusChangeListener() {
+      @Override
+      protected JobExtendedStatusChangeResponse handleRequest(JobExtendedStatusChangeRequest request) {
+        log.info("Received job extended status change request " + request);
+        
+        final JobExtendedStatusChangeResponse response = new JobExtendedStatusChangeResponse(request.getJobId());
+        response.setSuccess(true);
+        
+        try {
+          camel.sendBody("direct:jm.notify.jobExtendedStatusChange", request);
+        }
+        catch (Throwable t) {
+          log.warn("Error handling job extended status change notification", t);
+          response.setSuccess(false);
+        }
+        
+        return response;
+      }
+    };
+    
   }
   
   // TODO : create beans for all other request types

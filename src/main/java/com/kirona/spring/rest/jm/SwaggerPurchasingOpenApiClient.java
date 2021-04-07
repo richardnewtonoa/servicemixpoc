@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Configuration
+//@Configuration
 public class SwaggerPurchasingOpenApiClient {
 
   // https://camel.apache.org/components/latest/rest-openapi-component.html
